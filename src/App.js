@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import GaugeChart from 'react-gauge-chart'
 
 function getParams(url) {
   const paramSection = url.split('?')[1];
@@ -19,23 +19,23 @@ function getParams(url) {
 }
 
 function App() {
-  console.log('HERE', getParams(window.location.href));
+  const percentage = getParams(window.location.href).percent;
+  let adjustedPercent = 0;
+  if (percentage) {
+    adjustedPercent = (percentage / 125) + 0.1;
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GaugeChart id="gauge-chart3"
+        colors={['#fff', '#72CE8D', '#fff']}
+        arcsLength={[0.1, 0.8, 0.1]}
+        needleColor='#000'
+        needleBaseColor='#000'
+        arcWidth={0.5}
+        percent={adjustedPercent}
+        hideText
+      />
     </div>
   );
 }
