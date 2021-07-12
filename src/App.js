@@ -45,6 +45,7 @@ function App() {
         needleColor='#000'
         needleBaseColor='#000'
         arcWidth={0.5}
+        cornerRadius={0}
         percent={adjustedPercent}
         hideText
       />
