@@ -22,14 +22,26 @@ function App() {
   const percentage = getParams(window.location.href).percent;
   let adjustedPercent = 0;
   if (percentage) {
-    adjustedPercent = (percentage / 125) + 0.1;
+    adjustedPercent =  percentage / 100;// (percentage / 125) + 0.1;
   }
+  // const arcSplit = [0.1, adjustedPercent, 0.9 - adjustedPercent, 0.1];
+  // let colorCode = '#72CE8D';
+  // if (adjustedPercent < 0.85) {
+  //   colorCode = '#ffef62';
+  // }
+  // if (adjustedPercent < 0.6) {
+  //   colorCode = '#f0ad4e';
+  // }
+  // if (adjustedPercent < 0.35) {
+  //   colorCode = '#d9534f';
+  // }
 
   return (
     <div className="App">
       <GaugeChart id="gauge-chart3"
-        colors={['#fff', '#72CE8D', '#fff']}
-        arcsLength={[0.1, 0.8, 0.1]}
+        colors={['#d9534f', '#f0ad4e', '#ffef62', '#72CE8D', ]}
+        arcsLength={[0.25, 0.25, 0.25, 0.25]}
+        arcPadding={0}
         needleColor='#000'
         needleBaseColor='#000'
         arcWidth={0.5}
